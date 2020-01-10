@@ -60,8 +60,9 @@ def modelingData(X_train, y_train, max_words=35000):
     model.add(Embedding(max_words, 100))
     model.add(LSTM(128))
     model.add(Dense(1, activation='sigmoid'))
+    sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
-    model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
+    model.compile(optimizer=sgd, loss='binary_crossentropy', metrics=['acc'])
     tb_hist = keras.callbacks.TensorBoard(log_dir='./graph', histogram_freq=0, write_graph=True,
                                           write_images=True)
     model.fit(X_train, y_train, epochs=1000, batch_size=60, validation_split=0.2, callbacks=[tb_hist])
