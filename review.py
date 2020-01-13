@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import re
 
 import tensorboard
+from keras import optimizers
 from konlpy import jvm
 from konlpy.tag import Okt
 from tensorflow.keras.preprocessing.text import Tokenizer
