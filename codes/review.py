@@ -75,6 +75,8 @@ def predictEmotion(model, last_data, last_pre_data):
     predicts = model.predict_classes(X_test[:])
     predics = model.predict(X_test[:])
     search = 0
+    all_data = 0
+    hit_data = 0
     for i in range(len(predics)):
         if last_pre_data[i] == 1:
             print("긍정" + str(last_pre_data[i]) + "\n")
@@ -87,10 +89,15 @@ def predictEmotion(model, last_data, last_pre_data):
             print(str(last_data[i]) + "  부정  " + str(predics[i]))
         if last_pre_data[i] == predicts[i]:
             search += 1
+            hit_data += 1
+        all_data += 1
         print("\n")
         if i % 10 == 0:
             print("몇개 맞췄나요? " + str(search) + "/ 10\n")
             search = 0
+    percentage = hit_data / all_data * 100
+    print("모든 데이터 맞춘 수: " + str(hit_data) + "/" + str(all_data))
+    print("\n 맞춘 퍼센테이지 : " + str(percentage) + "\n")
 
 
 if __name__ == '__main__':
