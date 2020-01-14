@@ -5,8 +5,8 @@ def read_data(filename):
         data = data[1:]
     return data
 
-train_data = read_data('ratings_train.txt')
-test_data = read_data('ratings_test.txt')
+train_data = read_data('../data/ratings_train.txt')
+test_data = read_data('../data/ratings_test.txt')
 
 from konlpy.tag import Okt
 
