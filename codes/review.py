@@ -65,7 +65,7 @@ def modelingData(X_train, y_train, max_words=35000):
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
     tb_hist = keras.callbacks.TensorBoard(log_dir='../graph', histogram_freq=0, write_graph=True,
                                           write_images=True)
-    model.fit(X_train, y_train, epochs=10, batch_size=60, validation_split=0.2, callbacks=[tb_hist])
+    model.fit(X_train, y_train, epochs=20, batch_size=60, validation_split=0.2, callbacks=[tb_hist])
 
     print("\n 테스트 정확도: %.4f\n" % (model.evaluate(X_test, y_test)[1]))
     predictEmotion(model, last_data, last_pre_data)
