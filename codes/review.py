@@ -68,6 +68,7 @@ def modelingData(X_train, y_train, max_words=35000):
     model.fit(X_train, y_train, epochs=10, batch_size=60, validation_split=0.2, callbacks=[tb_hist])
 
     print("\n 테스트 정확도: %.4f\n" % (model.evaluate(X_test, y_test)[1]))
+    predictEmotion(model, last_data, last_pre_data)
     return model
 
 
@@ -116,5 +117,3 @@ if __name__ == '__main__':
     y_test = np.array(test_data['label'])
     model = modelingData(X_train, y_train, 35000)
     model.save('../models/first_model.h5')
-
-    predictEmotion(model, last_data, last_pre_data)
