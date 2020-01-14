@@ -61,7 +61,6 @@ def modelingData(model, X_train, y_train, max_words=35000):
 
 if __name__ == '__main__':
     import tensorflow as tf
-
     model = tf.keras.models.load_model('../models/first_model.h5')
     model.summary()
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
