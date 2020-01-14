@@ -65,7 +65,7 @@ if __name__ == '__main__':
     model = tf.keras.models.load_model('../models/first_model.h5')
     model.summary()
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
-    test_data = pd.read_table('./ratings_test.txt')
+    test_data = pd.read_table('../data/ratings_test.txt')
     last_data = np.array(test_data['document'])
     last_pre_data = np.array(test_data['label'])
     test_data = reviewTokenize(test_data)
@@ -84,9 +84,9 @@ if __name__ == '__main__':
             print("부정" + str(last_pre_data[i]) + "\n")
         print("값이 뭔가요?" + str(predicts[i]) + "\n")
         if predics[i] > 0.5:
-            print(last_data[i] + "  긍정  " + str(predics[i]))
+            print(str(last_data[i]) + "  긍정  " + str(predics[i]))
         else:
-            print(last_data[i] + "  부정  " + str(predics[i]))
+            print(str(last_data[i]) + "  부정  " + str(predics[i]))
         if last_pre_data[i] == predicts[i]:
             search += 1
             hit_data += 1
