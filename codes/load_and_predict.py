@@ -60,8 +60,7 @@ def modelingData(model, X_train, y_train, max_words=35000):
 
 
 if __name__ == '__main__':
-    import tensorflow as tf
-    model = tf.keras.models.load_model('../models/first_model.h5')
+    model = load_model('../models/first_model.h5')
     model.summary()
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
     test_data = pd.read_table('../data/ratings_test.txt')
@@ -77,22 +76,23 @@ if __name__ == '__main__':
     all_data = 0
     hit_data = 0
     for i in range(len(predics)):
+        predic = float(predics[i])
         if last_pre_data[i] == 1:
             print("긍정" + str(last_pre_data[i]) + "\n")
         else:
             print("부정" + str(last_pre_data[i]) + "\n")
         print("값이 뭔가요?" + str(predicts[i]) + "\n")
-        if predics[i] > 0.5:
-            print(str(last_data[i]) + "  긍정  " + str(predics[i]))
+        if predic > 0.5:
+            print(str(last_data[i]) + "  긍정  " + str(predic * 100))
         else:
-            print(str(last_data[i]) + "  부정  " + str(predics[i]))
+            print(str(last_data[i]) + "  부정  " + str((1-predic) * 100))
         if last_pre_data[i] == predicts[i]:
             search += 1
             hit_data += 1
         print("\n")
         all_data += 1
         if i % 10 == 0:
-            print("몇개 맞췄나요? " + str(search) + "/ 10\n")
+            print("몇개 맞췄나요? " + str(search) + "/ 10 \n")
             search = 0
     percentage = hit_data / all_data * 100
     print("모든 데이터 맞춘 수: " + str(hit_data) + "/" + str(all_data))
