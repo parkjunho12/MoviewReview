@@ -33,6 +33,7 @@ import nltk
 text = nltk.Text(tokens, name='NMSC')
 
 
+
 selected_words = [f[0] for f in text.vocab().most_common(10000)]
 
 def term_frequency(doc):

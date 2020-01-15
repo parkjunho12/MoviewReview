@@ -78,7 +78,7 @@ model.compile(optimizer=optimizers.RMSprop(lr=0.001),
              loss=losses.binary_crossentropy,
              metrics=[metrics.binary_accuracy])
 
-model.fit(x_train, y_train, epochs=10, batch_size=512)
+model.fit(x_train, y_train, epochs=100, batch_size=512)
 results = model.evaluate(x_test, y_test)
 model.save('../first_model.h5')
 
