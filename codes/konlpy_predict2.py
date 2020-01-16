@@ -42,7 +42,7 @@ def predict_pos_neg(review):
         print("[{}]는 {:.2f}% 확률로 부정 리뷰이지 않을까 추측해봅니다.^^;\n".format(review, (1 - score) * 100))
         
 
-with open('train_docs.json') as f:
+with open('train_docs.json', encoding="utf-8") as f:
     train_docs = json.load(f)
 
 
