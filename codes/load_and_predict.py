@@ -8,7 +8,6 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import Embedding, Dense, LSTM
-from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import load_model
 
 def reviewTokenize(data):
@@ -71,7 +70,7 @@ if __name__ == '__main__':
     X_test = encodingData(tested_data)
     X_test = matchLength(X_test)
     predicts = model.predict_classes(X_test[:])
-    predics = model.predict(X_test[:])
+    predics = float(model.predict(float(X_test[:])))
     search = 0
     all_data = 0
     hit_data = 0
