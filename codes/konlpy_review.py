@@ -94,6 +94,7 @@ def make_selected_words(train_docs):
 train_docs, test_docs = read_and_tokenize()
 selected_words = make_selected_words(train_docs)
 train_x, train_y = change_frequency(train_docs)
+print(train_y)
 test_x, test_y = change_frequency(test_docs)
 model = modeling(array_to_float(train_x), array_to_float(train_y))
 results = model.evaluate(array_to_float(test_x), array_to_float(test_y))

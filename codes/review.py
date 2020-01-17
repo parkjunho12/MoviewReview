@@ -5,6 +5,7 @@ import re
 
 import tensorboard
 from keras import optimizers
+from keras.layers import TimeDistributed
 from konlpy import jvm
 from konlpy.tag import Okt
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -14,7 +15,7 @@ from tensorflow.keras.layers import Embedding, Dense, LSTM
 from tensorflow.keras.models import Sequential
 from keras.models import load_model
 import keras
-
+TimeDistributed
 
 def reviewTokenize(data):
     data = data.dropna(how='any')
