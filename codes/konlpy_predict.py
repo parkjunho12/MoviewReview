@@ -59,7 +59,8 @@ from tensorflow.keras import metrics
 from tensorflow.keras.models import load_model 
 
 
-model = load_model('../first_model.h5')
+
+model = load_model('../models/first_model.h5')
 
 model.compile(optimizer=optimizers.RMSprop(lr=0.001),
              loss=losses.binary_crossentropy,

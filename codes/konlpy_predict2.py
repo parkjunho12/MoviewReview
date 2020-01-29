@@ -51,7 +51,7 @@ text = nltk.Text(tokens, name='NMSC')
 
 selected_words = [f[0] for f in text.vocab().most_common(10000)]
 
-model = load_model('../first_model.h5')
+model = load_model('../models/epoch_25_model.h5')
 
 model.compile(optimizer=optimizers.RMSprop(lr=0.001),
              loss=losses.binary_crossentropy,

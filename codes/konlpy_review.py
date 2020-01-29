@@ -9,7 +9,7 @@ import json
 import os
 from pprint import pprint
 import nltk
-
+import keras
 
 def read_data(filename):
     with open(filename, 'r', encoding="utf-8") as f:
@@ -68,8 +68,9 @@ def modeling(x_train, y_train):
     model.compile(optimizer=optimizers.RMSprop(lr=0.001),
                   loss=losses.binary_crossentropy,
                   metrics=[metrics.binary_accuracy])
-
-    model.fit(x_train, y_train, epochs=10, batch_size=512)
+    tb_hist = keras.callbacks.TensorBoard(log_dir='../graph', histogram_freq=0, write_graph=True,
+                                          write_images=True)
+    model.fit(x_train, y_train, epochs=25, batch_size=512, callbacks=[tb_hist])
     return model
 
 
@@ -98,7 +99,7 @@ print(train_y)
 test_x, test_y = change_frequency(test_docs)
 model = modeling(array_to_float(train_x), array_to_float(train_y))
 results = model.evaluate(array_to_float(test_x), array_to_float(test_y))
-model.save('../first_model.h5')
+model.save('../models/epoch_25_model.h5')
 
 predict_pos_neg("올해 최고의 영화! 세 번 넘게 봐도 질리지가 않네요.")
 predict_pos_neg("배경 음악이 영화의 분위기랑 너무 안 맞았습니다. 몰입에 방해가 됩니다.")
